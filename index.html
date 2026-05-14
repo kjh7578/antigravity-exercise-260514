@@ -19,5 +19,42 @@
             <div class="rainbow-decoration"></div>
         </div>
     </main>
+    <script>
+        function createPetal() {
+            const petal = document.createElement('div');
+            petal.classList.add('petal');
+            
+            // Randomize petal properties
+            const size = Math.random() * 15 + 10;
+            petal.style.width = `${size}px`;
+            petal.style.height = `${size}px`;
+            petal.style.left = `${Math.random() * 100}vw`;
+            
+            const duration = Math.random() * 5 + 5;
+            petal.style.animationDuration = `${duration}s`;
+            
+            const delay = Math.random() * 5;
+            petal.style.animationDelay = `${delay}s`;
+            
+            // Add subtle variety in color
+            const colors = ['#ffb7c5', '#ffd1dc', '#ffc0cb', '#ffe4e1'];
+            petal.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+
+            document.body.appendChild(petal);
+
+            // Remove petal after animation
+            setTimeout(() => {
+                petal.remove();
+            }, (duration + delay) * 1000);
+        }
+
+        // Create petals periodically
+        setInterval(createPetal, 300);
+
+        // Initial burst
+        for(let i = 0; i < 15; i++) {
+            createPetal();
+        }
+    </script>
 </body>
 </html>
